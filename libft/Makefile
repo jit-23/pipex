@@ -6,7 +6,7 @@
 #    By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/23 21:29:48 by fde-jesu          #+#    #+#              #
-#    Updated: 2023/10/04 19:15:06 by fde-jesu         ###   ########.fr        #
+#    Updated: 2023/12/26 17:39:23 by fde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,6 @@ FUN = ft_isalpha.c \
       ft_substr.c \
       ft_strjoin.c \
       ft_strtrim.c \
-      ft_split.c \
       ft_strmapi.c \
       ft_striteri.c \
       ft_putchar_fd.c \
@@ -58,8 +57,10 @@ FUN = ft_isalpha.c \
       ft_printf_putnbr.c \
       ft_putnbr_u.c \
       ft_putchar.c \
-      ft_writing.c
-      
+      ft_writing.c \
+		ft_substr_path.c  \
+		ft_split_path.c    \
+		ft_firstword.c
 
 #FUN_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 			ft_lstlast.c ft_lstadd_back.c ft_lstclear.c ft_lstdelone.c \

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_path.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/18 23:01:30 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/21 00:26:38 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/04/30 19:37:00 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/12/21 00:33:05 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	size_string(char const *str, char c, int i)
 	return (size);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_path(char const *s, char c)
 {
 	int		i;
 	int		j;
@@ -65,7 +65,7 @@ char	**ft_split(char const *s, char c)
 		while (s[j] == c)
 			j++;
 		size = size_string(s, c, j);
-		strings[i] = ft_substr(s, j, size);
+		strings[i] = ft_substr_path(s, j, size);
 		j += size;
 		i++;
 	}

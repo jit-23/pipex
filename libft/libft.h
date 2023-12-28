@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:09:14 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/11/14 19:53:36 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/12/27 03:52:46 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,9 @@ void	ft_printf_putnbr(int nb, unsigned int *byte_count);
 void	ft_putnbr_u(unsigned int nb, unsigned int *byte_count);
 int		ft_putchar(char c);
 void	ft_writing(char *str, unsigned int *byte_count);
+char	**ft_split_path(char const *s, char c);
+char	*ft_substr_path(char const *s, unsigned int start, size_t len);
+char	*ft_firstword(char *command);
+
 
 #endif

@@ -1,21 +1,22 @@
 NAME =  pipex
-CFLAGS = -Werror -Wextra -Wall
-SRC = main.C
-SRC_O = {SRC:.c=.o}
+CFLAGS = -Wall -Werror -Wextra
+FUN = src/main.c src/check_args.c src/pipex.c src/free.c
+OBJ = ${FUN:.c=.o}
 LIBFT = -L libft -lft
 MAKE = make -C
+
 all: ${NAME}
 
-${NAME} : ${SRC_O}
-		${MAKE} ${LIBFT}
-		cc ${CFLAGS} ${SRC} -o ${NAME}
+${NAME} : ${OBJ}
+			${MAKE} libft
+			cc ${CFLAGS} -I. ${FUN}  ${LIBFT} -o ${NAME}
 clean:
 	rm -f ${OBJ}
 	${MAKE} libft clean
 
-fclean: all
+fclean: clean
 	rm -f ${NAME}	   
-	${MAKE} libft clean
+	${MAKE} libft fclean
 
 re : fclean all
 

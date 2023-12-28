@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_substr_path.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/26 18:56:44 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/24 02:52:11 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/12/21 00:17:10 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/12/24 02:54:00 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include"libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_substr_path(char const *s, unsigned int start, size_t len)
 {
-	size_t	i;
-	char	*str1;
-	char	*str2;
 	char	*ptr;
+	size_t	s_size;
 
-	i = 0;
-	str1 = (char *)s1;
-	str2 = (char *)s2;
-	ptr = (char *) malloc(sizeof(char) * (ft_strlen(str1)
-				+ ft_strlen(str2) + 2));
+	s_size = ft_strlen(s);
+	if (!s)
+		return (NULL);
+	if (s_size < start)
+		return (ft_strdup(""));
+	if (len > (s_size - start))
+		len = s_size - start;
+	ptr = (char *)malloc(sizeof(char) * (len + 2));
 	if (!ptr)
-		return (0);
-	ft_memcpy(ptr, str1, ft_strlen(str1));
-	ptr[ft_strlen(str1)] = 's';
-	while (str2[i])
-	{
-		ptr[ft_strlen(str1) + i] = str2[i];
-		i++;
-	}
-	ptr[ft_strlen(str1) + i] = '\0';
+		return (NULL);
+	ft_memcpy(ptr, &s[start], len);
+	ptr[len] = '/';
+	ptr[len + 1] = '\0';
 	return (ptr);
 }

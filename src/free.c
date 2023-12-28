@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/25 23:01:59 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/21 00:16:46 by fde-jesu         ###   ########.fr       */
+/*   Created: 2023/12/28 02:53:51 by fde-jesu          #+#    #+#             */
+/*   Updated: 2023/12/28 03:04:27 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../pipex.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void exit_pipe(t_pipex *pp)
 {
-	char	*ptr;
-	size_t	s_size;
+	int i;
 
-	s_size = ft_strlen(s);
-	if (!s)
-		return (NULL);
-	if (s_size < start)
-		return (ft_strdup(""));
-	if (len > (s_size - start))
-		len = s_size - start;
-	ptr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ptr)
-		return (NULL);
-	ft_memcpy(ptr, &s[start], len);
-	ptr[len] = '\0';
-	return (ptr);
+	i = -1;
+	if (pp->fd1)
+		close(pp->fd1);
+	if (pp->fd2)
+		close(pp->fd2);
+	while(pp->cmd1_args[++i])
+		free(pp->cmd1_args[i]);
+	i = -1;
+	while(pp->cmd2_args[++i])
+		free(pp->cmd2_args[i]);
+	i = -1;
+	while(pp->path_arr1[++i])
+		free(pp->path_arr1[i]);
+	i = -1;
+	while(pp->path_arr2[++i])
+		free(pp->path_arr2[i]);
 }
