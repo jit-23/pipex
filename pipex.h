@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:53:56 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/28 02:59:15 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/12/30 19:11:02 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ typedef struct s_pipex // ./pipex file1 comand1 comand2 file2
 {
 	char **path_arr1;
 	char **path_arr2;
+	
+	char	**cmd1_args;
+	char	**cmd2_args;
+	
 	char *path;
 
 	char *file1;
@@ -36,8 +40,6 @@ typedef struct s_pipex // ./pipex file1 comand1 comand2 file2
 	char *cmd_set1;
 	char *cmd_set2;
 
-	char	**cmd1_args;
-	char	**cmd2_args;
 	
 	char *cmd1_path;
 	char *cmd2_path;
@@ -46,7 +48,7 @@ typedef struct s_pipex // ./pipex file1 comand1 comand2 file2
 	char *cmd2;	
 }t_pipex;
 
-char **	organize_env(char **path_arr, char *path ,char *cmd);
+char **	organize_env( char *path ,char *cmd);
 void 	check_comands(t_pipex *pipex);
 void 	ext(char *str, t_pipex *pp);
 void 	check_files(t_pipex *pipex);

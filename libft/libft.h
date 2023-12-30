@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/01 16:09:14 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/27 03:52:46 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:18:05 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,5 @@ void	ft_writing(char *str, unsigned int *byte_count);
 char	**ft_split_path(char const *s, char c);
 char	*ft_substr_path(char const *s, unsigned int start, size_t len);
 char	*ft_firstword(char *command);
-
 
 #endif

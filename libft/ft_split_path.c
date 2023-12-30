@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/30 19:37:00 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/21 00:33:05 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2023/12/30 19:51:32 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ static int	ft_count(char const *s, char c)
 
 	i = 0;
 	count = 0;
+	if (!s)
+		return 0;
 	while (s[i])
 	{
 		if (s[i] != c)
@@ -72,3 +74,4 @@ char	**ft_split_path(char const *s, char c)
 	strings[i] = 0;
 	return (strings);
 }
+
