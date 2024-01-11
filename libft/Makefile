@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+         #
+#    By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/23 21:29:48 by fde-jesu          #+#    #+#              #
-#    Updated: 2023/12/26 17:39:23 by fde-jesu         ###   ########.fr        #
+#    Updated: 2024/01/11 23:20:08 by fde-jesu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,28 +58,18 @@ FUN = ft_isalpha.c \
       ft_putnbr_u.c \
       ft_putchar.c \
       ft_writing.c \
-		ft_substr_path.c  \
-		ft_split_path.c    \
-		ft_firstword.c
+	ft_firstword.c \
+      ft_count.c
 
-#FUN_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
-			ft_lstlast.c ft_lstadd_back.c ft_lstclear.c ft_lstdelone.c \
-			ft_lstiter.c ft_lstmap.c
 OBJ = ${FUN:.c=.o}
-#OBJ_BONUS = ${FUN_BONUS:.c=.o}
 
 all: $(NAME)
 
 $(NAME):
 	      cc -g ${CFLAGS} -c -I. ${HEADER} ${FUN}
 		ar rcs ${NAME} ${OBJ}
-
-#bonus:	${OBJ_FUN} ${OBJ}
-#		ar rcs ${NAME} ${OBJ} ${OBJ_BONUS}
-
 clean:
 	rm -f $(OBJ) 
-      #$(OBJ_BONUS)
 
 fclean: clean
 	rm -f $(NAME)

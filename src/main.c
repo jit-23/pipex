@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:37:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/30 20:20:36 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/11 23:12:53 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,37 +21,34 @@ void init_pipe(t_pipex *pipex, char **argv)
 	pipex->cmd_set2 = argv[3];
 	pipex->cmd2 = ft_firstword(argv[3]);
 	pipex->file2 = argv[4];
-	pipex->cmd1_path = NULL;
-	pipex->cmd2_path = NULL;
-	pipex->cmd1_args = NULL;
-	pipex->cmd2_args = NULL;
-	pipex->path_arr1 = NULL;
-	pipex->path_arr2 = NULL;
 }
 
 
 void	find_path(char ** env, t_pipex *pipex)
 {
 	char search[] = "PATH=";
+	char *path;
 	int i;
 
 	i = -1;
-	while(env[++i])
+	path = NULL;
+	while (env[++i])
 	{
-		if (ft_strnstr(env[i], search, sizeof(search)) != NULL)
-		{
-			pipex->path = ft_strnstr(env[i], search, sizeof(search));
+		path = ft_strnstr(env[i], search, ft_strlen(search));
+		if (path)
 			break ;
-		}
+		else
+			continue ;
 	}
-	pipex->path_arr1 = organize_env(pipex->path, pipex->cmd1);
-	pipex->path_arr2 = organize_env(pipex->path, pipex->cmd2);
+	pipex->path = &path[5];
+	pipex->path_arr1 = organize_env(pipex->path, pipex->cmd1, pipex);
+	pipex->path_arr2 = organize_env(pipex->path, pipex->cmd2, pipex);
 	if (!pipex->path_arr1 || !pipex->path_arr2)
-		ext("pipex path arr cant b found", pipex);	
+		ext("Array of flags can't be created:", pipex);	
 	pipex->cmd1_path = get_access(pipex->cmd1_path,pipex->path_arr1);
 	pipex->cmd2_path = get_access(pipex->cmd2_path, pipex->path_arr2);	
 	if (!pipex->cmd1_path || !pipex->cmd2_path)
-		ext("error finding exec1\n", pipex);
+		ext("error finding commands:", pipex);
 }
 
 int	main(int argc, char *argv[], char *env[])

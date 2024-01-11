@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fde-jesu <fde-jesu@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 21:53:56 by fde-jesu          #+#    #+#             */
-/*   Updated: 2023/12/30 19:11:02 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/11 23:15:44 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_pipex // ./pipex file1 comand1 comand2 file2
 	char *cmd2;	
 }t_pipex;
 
-char **	organize_env( char *path ,char *cmd);
+char **organize_env( char *path ,char *cmd, t_pipex *pp);
 void 	check_comands(t_pipex *pipex);
 void 	ext(char *str, t_pipex *pp);
 void 	check_files(t_pipex *pipex);
@@ -56,7 +56,7 @@ void 	init_pipe(t_pipex *pipex, char **argv);
 void    find_path(char ** env, t_pipex *pipex);
 char 	*get_access(char *cmd_path,char ** path_exec);
 void 	pp(t_pipex *pipex, char **env);
-void	proccess_parent(t_pipex *pp, int *fd, char **env);
+void	process_child2(t_pipex *pp, int *fd, char **env);
 void 	proccess_child(t_pipex *pp, int *fd, char **env);
 void exit_pipe(t_pipex *pp);
 
