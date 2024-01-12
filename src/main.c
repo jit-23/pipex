@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:37:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/11 23:12:53 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/12 02:59:00 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ int	main(int argc, char *argv[], char *env[])
 	t_pipex pipex;
 
 	if (argc != 5)
-	{
-		ft_printf("wrong number of argc\n");
 		return(1);
-	}
 	init_pipe(&pipex, argv);
 	check_files(&pipex);
 	check_comands(&pipex);

@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:56:45 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/11 23:14:52 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/12 01:55:29 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ char **organize_env(char *path ,char *cmd, t_pipex *pp)
 
 void ext(char *str, t_pipex *pp)
 {
-	printf("%s\n", str);
+	perror(str);
 	exit_pipe(pp);
 	exit(1);
 }
