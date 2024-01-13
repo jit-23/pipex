@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/28 02:53:51 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/13 00:44:47 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/13 01:35:14 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,10 @@ void	exit_pipe(t_pipex *pp)
 			free(pp->cmd2_args[i]);
 		free(pp->cmd2_args);
 	}
-	exit(1);
 }
 
 void	ext(t_pipex *pp)
 {
 	exit_pipe(pp);
-	exit(1);
+	exit(127);
 }

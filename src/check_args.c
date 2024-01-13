@@ -6,7 +6,7 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:56:45 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/12 23:32:14 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/13 03:31:02 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,12 @@ void	check_files(t_pipex *pipex)
 {
 	pipex->fd1 = open(pipex->file1, O_RDONLY);
 	if (pipex->fd1 == -1)
+	{
+		ft_putstr_fd("no such file or directory: ", 2);
+		ft_putstr_fd(pipex->file1, 2);
+		ft_putchar_fd('\n', 2);
 		ext(pipex);
+	}
 	pipex->fd2 = open(pipex->file2, O_RDWR | O_TRUNC, 0777);
 	if (pipex->fd2 == -1)
 	{
