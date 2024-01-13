@@ -6,13 +6,13 @@
 /*   By: fde-jesu <fde-jesu@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 17:37:27 by fde-jesu          #+#    #+#             */
-/*   Updated: 2024/01/12 02:59:00 by fde-jesu         ###   ########.fr       */
+/*   Updated: 2024/01/13 00:43:00 by fde-jesu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pipex.h"
 
-void init_pipe(t_pipex *pipex, char **argv)
+void	init_pipe(t_pipex *pipex, char **argv)
 {
 	ft_bzero(pipex, sizeof(t_pipex));
 	pipex->file1 = argv[1];
@@ -23,18 +23,15 @@ void init_pipe(t_pipex *pipex, char **argv)
 	pipex->file2 = argv[4];
 }
 
-
-void	find_path(char ** env, t_pipex *pipex)
+void	find_path(char **env, t_pipex *pipex)
 {
-	char search[] = "PATH=";
-	char *path;
-	int i;
+	char	*path;
+	int		i;
 
 	i = -1;
-	path = NULL;
 	while (env[++i])
 	{
-		path = ft_strnstr(env[i], search, ft_strlen(search));
+		path = ft_strnstr(env[i], "PATH=", 5);
 		if (path)
 			break ;
 		else
@@ -44,19 +41,19 @@ void	find_path(char ** env, t_pipex *pipex)
 	pipex->path_arr1 = organize_env(pipex->path, pipex->cmd1, pipex);
 	pipex->path_arr2 = organize_env(pipex->path, pipex->cmd2, pipex);
 	if (!pipex->path_arr1 || !pipex->path_arr2)
-		ext("Array of flags can't be created:", pipex);	
-	pipex->cmd1_path = get_access(pipex->cmd1_path,pipex->path_arr1);
-	pipex->cmd2_path = get_access(pipex->cmd2_path, pipex->path_arr2);	
+		ext(pipex);
+	pipex->cmd1_path = get_access(pipex->cmd1_path, pipex->path_arr1);
+	pipex->cmd2_path = get_access(pipex->cmd2_path, pipex->path_arr2);
 	if (!pipex->cmd1_path || !pipex->cmd2_path)
-		ext("error finding commands:", pipex);
+		ext(pipex);
 }
 
 int	main(int argc, char *argv[], char *env[])
 {
-	t_pipex pipex;
+	t_pipex	pipex;
 
 	if (argc != 5)
-		return(1);
+		return (perror("wrong number of arguments:"), 1);
 	init_pipe(&pipex, argv);
 	check_files(&pipex);
 	check_comands(&pipex);
